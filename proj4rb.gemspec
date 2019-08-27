@@ -1,3 +1,4 @@
+require 'date'
 Gem::Specification.new do |spec|
   spec.name = 'proj4rb'
   spec.version = '1.0.1'
