@@ -1,4 +1,3 @@
-require 'date'
 Gem::Specification.new do |spec|
   spec.name = 'proj4rb'
   spec.version = '1.0.2'
@@ -9,8 +8,7 @@ Gem::Specification.new do |spec|
   spec.platform = Gem::Platform::RUBY
   spec.authors = ['Guilhem Vellut', 'Jochen Topf', 'Charlie Savage']
   spec.homepage = 'https://github.com/cfis/proj4rb'
-  spec.required_ruby_version = '>= 1.8.7'
-  spec.date = DateTime.now
+  spec.required_ruby_version = '>= 1.8.7'  
   spec.license = 'MIT'
 
   spec.requirements << 'Proj.4 C library'
