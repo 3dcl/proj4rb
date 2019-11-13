@@ -1,6 +1,6 @@
 # encoding: UTF-8
 
-if File.exists?(File.dirname(__FILE__ + '/../data'))
+if File.exist?(File.dirname(__FILE__ + '/../data'))
  ENV['PROJ_LIB'] = File.dirname(__FILE__) + '/../data'
 end
 

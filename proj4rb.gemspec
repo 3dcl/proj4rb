@@ -14,6 +14,6 @@ Gem::Specification.new do |spec|
   spec.requirements << 'Proj.4 C library'
   spec.require_path = 'lib'
   spec.extensions = ['ext/extconf.rb']
-  spec.files =  'git ls-files'.split("\n")
-  spec.test_files =  'git ls-files -- {test,spec,features}/'.split("\n")
+  spec.files =  Dir['MIT-LICENSE', 'README.rdoc', 'lib/**/*', 'ext/**/*', 'data/**/*']
+  spec.test_files =  Dir["test/**"]
 end
