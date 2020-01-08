@@ -2,19 +2,18 @@ require 'ffi'
 
 module Proj
   module Api
+    ACCEPTABLE_LIB_VERSIONS = %w[19,18,17, 16, 15, 13, 12]
     extend FFI::Library
-    ffi_lib ['libproj-15', # Mingw64 Proj 6
-             'libproj.so.15', # Linux (Postgresql repository )Proj 6
-             'libproj.so.13', # Linux (Fedora 31) Proj 5
-             'libproj.so.12', # Linux (Ubuntu 18.04 ) Proj 4
-             'libproj-12', # Mingw64 Proj 4
-             '/opt/local/lib/proj6/lib/libproj.15.dylib', # Macports Proj 6
-             '/opt/local/lib/proj5/lib/libproj.13.dylib', # Macports Proj 5
-             '/opt/local/lib/proj49/lib/libproj.12.dylib', # Macports Proj 5
-             '/usr/local/lib/libproj.15.dylib', # mac homebrew mac Proj 6
-             '/usr/local/lib/libproj.13.dylib', # mac howbrew Proj 5
-             '/usr/local/lib/libproj.12.dylib' # mac howbrew Proj 5
-            ] 
+    libraries = [
+      'libproj-VERSION', # Mingw64 Proj 6
+      'libproj.so.VERSION', # Linuxes
+      '/opt/local/lib/proj6/lib/libproj.VERSION.dylib', # Macports
+      '/usr/local/lib/libproj.VERSION.dylib' # Mac homebrew
+    ].map do |prefix_pattern|
+      ACCEPTABLE_LIB_VERSIONS.map{|version_number| prefix_pattern.gsub('VERSION', version_number)} 
+    end.flatten
+
+    ffi_lib libraries
 
     # Load the old deprecated api - supported by all Proj versions (until Proj 7!)
     require_relative './api_4_9'
